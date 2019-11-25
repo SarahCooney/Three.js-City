@@ -79,7 +79,7 @@
         base.real.receiveShadow = true;
 
         // trees & grass
-        for (i = 0; i < 4; i += 1) {
+     /*   for (i = 0; i < 4; i += 1) {
             base = new THREE.Mesh(
                 new THREE.PlaneGeometry(width - margin * 2, depth - margin * 2),
                 me.generateSidewalkMaterials('texture-grass', {
@@ -107,11 +107,11 @@
             tree.rotation.y = Math.random() * 2 * Math.PI;
             me.add(tree);
         }
-
+*/
         // fountain
-        T3.World.fountain = new T3.model.Fountain({
+       /* T3.World.fountain = new T3.model.Fountain({
             originalParent: me
-        });
+        }); */
     };
 
     Park.prototype.generateSidewalkMaterials = function (textureName, options) {

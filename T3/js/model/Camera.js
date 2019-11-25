@@ -36,7 +36,7 @@
         var defaults = {
             renderer: null,
             type: 'PerspectiveCamera',
-            fov: 38,
+            fov: 50,
             ratio: window.innerWidth / window.innerHeight,
             near: Camera.near,
             far: Camera.far,
@@ -62,8 +62,9 @@
         if (config.cameraPan) {
             this.cameraControls = new THREE.OrbitAndPanControls(camera, defaults.renderer.domElement);
             // avoid panning to see the bottom face
-            this.cameraControls.maxPolarAngle = Math.PI / 2 * 0.99;
-            this.cameraControls.target.set(0, 10, 10);
+            this.cameraControls.maxPolarAngle = 2* Math.PI / 3.0;
+            this.cameraControls.target.set(5, 10, 10);
+			this.cameraControls.enableZoom = true;
         }
         return this;
     };

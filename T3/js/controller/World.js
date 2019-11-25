@@ -67,11 +67,11 @@
     World.prototype = {
         init: function () {
             var me = this,
-                gridSize = 5,
+                gridSize = 6,
                 freeSpace;
 
             // some good music O:
-            me.initMusic();
+            //me.initMusic();
             // put the scene in a huge cube
             me.initSkyBox();
 
@@ -82,16 +82,16 @@
 
             // world objects
             freeSpace = me.createBuildingBlocks(gridSize);
-            me.createRoads(freeSpace);
+           // me.createRoads(freeSpace);
             me.createLampParticles();
             me.createLampWires();
             // car
-            me.createCar();
+          //  me.createCar();
             // rain!
 //            me.createRain();
 
             // init motion detection
-            me.initMotion();
+           // me.initMotion();
 
             // postprocessing
             me.initPostprocessing();
@@ -102,7 +102,7 @@
          */
         initCoordinates: function () {
             new T3.model.Coordinates({
-                ground: true
+                ground: false //Change here to auto show ground or not
 //                gridX: true
             });
         },
@@ -229,8 +229,9 @@
                 rows = [],
                 cols = [],
                 selected,
-                models = ['Block', 'Classic', 'RoundBlock', 'Park'],
-//                probability = [0, 0, 0, 1, 1],
+                //models = ['Block', 'Classic', 'RoundBlock', 'Park'],
+				models = ['Park', 'Park', 'Park', 'Park'],
+                //probability = [0, 0, 0, 1, 1],
                 probability = [0, 0.7, 0.8, 0.9, 1],
                 max = [Infinity, Infinity, 1, 1],
                 current = [0, 0, 0, 0],
@@ -264,9 +265,15 @@
                     // update current
                     current[selected] += 1;
 
-                    me.createBuildings(
+                   /* me.createBuildings(
                         cols[i] + 1, rows[j] + 1,
                         cols[i + 1] - 1, rows[j + 1] - 1,
+                        models[selected]
+                    ); */
+					
+					me.createBuildings(
+                        cols[i], rows[j],
+                        cols[i + 1], rows[j + 1],
                         models[selected]
                     );
                 }
@@ -308,7 +315,7 @@
                 depth: object.depth * T3.scale,
                 height: object.width * T3.scale,
                 position: object.position
-            });
+            }); 
         },
 
         /**

@@ -81,12 +81,13 @@ T3.Application = {
     createScene: function () {
         // instantiate the scene (global)
         window.scene = new THREE.Scene();
-        window.scene.fog = new THREE.Fog( 0x808080, 300, 1500);
-        window.scene.fog.visible = true;
+       // window.scene.fog = new THREE.Fog( 0x808080, 300, 1500);
+        //window.scene.fog.visible = true;
         return this;
     },
 
-    toggleFogStatus: function () {
+//Turn this off.  Don't want Fog.
+	/* toggleFogStatus: function () {
         if (scene.fog.visible) {
             scene.fog.near = 300;
             scene.fog.far = 1500;
@@ -94,8 +95,8 @@ T3.Application = {
             scene.fog.near = Infinity;
             scene.fog.far = Infinity;
         }
-        return this;
-    },
+        return this; 
+    }, */
 
     /**
      * Creates the lights used in the scene
@@ -228,10 +229,10 @@ T3.Application = {
         folder
             .add(T3.ObjectManager.get('directional-light-3'), 'shadowCameraVisible')
             .name('Shadow camera');
-        folder
-            .add(scene.fog, 'visible')
-            .name('Fog visibility')
-            .onFinishChange(this.toggleFogStatus);
+       //folder
+         //   .add(scene.fog, 'visible')
+           // .name('Fog visibility')
+           // .onFinishChange(this.toggleFogStatus);
         return this;
     },
 
